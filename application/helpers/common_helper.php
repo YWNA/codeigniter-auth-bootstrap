@@ -27,3 +27,10 @@ function p($var, $isdie=TRUE, $type=null, $isjson=FALSE){
     }
     if($isdie) die;
 }
+function get_guid($pw_length = 3){
+    $randpwd = '';
+    for ($i = 0; $i < $pw_length; $i++) {
+        $randpwd .= chr(mt_rand(65, 90));
+    }
+    return time() . $randpwd;
+}

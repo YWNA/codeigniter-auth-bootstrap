@@ -22,10 +22,10 @@ class Common
 		$function   = $this->ci_obj->router->fetch_method();
 
 		if (!in_array($controller, $this->ci_obj->config->item('not_auth_controller'))) {
-			if (session_conf('user')) {
-				echo "string";
+			if (session_conf('username')) {
+				// redirect('/home');
 			} else {
-				echo "FALSE";
+                redirect('/welcome/login');
 			}
 		} else {
 			// 免权限验证
