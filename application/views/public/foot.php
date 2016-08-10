@@ -1,7 +1,6 @@
 <footer class="footer">
     <div class="container"><br>
         <p class="text-center">杭州微泊网络科技有限公司 COPYRIGHT 2016 技术支持 kf@iwebo.cc</p>
-        <p class="text-center">saebo.cc</p>
     </div>
 </footer>
 </div>
