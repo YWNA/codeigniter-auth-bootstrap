@@ -15,3 +15,15 @@ function session_conf($key, $value = NULL)
 		return FALSE;
 	}
 }
+function p($var, $isdie=TRUE, $type=null, $isjson=FALSE){
+    if($type==1) die(var_dump($var));
+    if($isjson){
+        echo json_encode(array('code'=>TRUE, 'msg'=>'测试数据','data'=>$var));
+        return;
+    }else{
+        echo '<pre>';
+        print_r($var);
+        echo '</pre>';
+    }
+    if($isdie) die;
+}
