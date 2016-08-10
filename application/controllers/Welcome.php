@@ -58,4 +58,9 @@ class Welcome extends CI_Controller {
         }
         $this->load->view('register',array('title'=>'注册'));
     }
+    public function logout()
+    {
+        session_destroy();
+        redirect('/');
+    }
 }
