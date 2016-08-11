@@ -9,6 +9,7 @@ class Welcome extends CI_Controller {
     }
 	public function index()
 	{
+        redirect('/');
 		$this->load->view('welcome_message');
 	}
 	public function login()
@@ -51,7 +52,7 @@ class Welcome extends CI_Controller {
                 "type" => $type,
                 "abbreviation" => $abbreviation,
                 "password" => $password,
-                "guid" => get_guid(),
+                "guid" => get_guid(0),
             );
             $this->db->replace('company', $data);
             redirect('/welcome/login');

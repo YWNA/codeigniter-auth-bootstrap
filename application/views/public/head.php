@@ -7,6 +7,8 @@
   <title><?php echo isset($title) ? $title : '标题'; ?></title>
   <link href="<?php echo base_url() ?>public/css/bootstrap.min.css" rel="stylesheet">
   <script src="<?php echo base_url() ?>public/js/jquery.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="/public/plugins/webuploader/dist/webuploader.css">
+  <script type="text/javascript" src="/public/plugins/webuploader/dist/webuploader.js"></script>
 </head>
 <body>
 <div class="container-fluid">
