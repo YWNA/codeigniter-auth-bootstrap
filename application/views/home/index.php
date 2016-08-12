@@ -27,7 +27,7 @@
     </div>
     <div class="row">
         <a name="poster"></a>
-        <?php $uguid = $_SESSION['guid']; $tmp = array($uguid. '0', $uguid. '1', $uguid. '2', $uguid. '3'); if($poster) { foreach ($poster as $key => $value){ ?>
+        <?php $uguid = $_SESSION['guid']; $tmp = array($uguid. 'QEW', $uguid. 'ASD', $uguid. 'ZXC', $uguid. 'RTY'); if($poster) { foreach ($poster as $key => $value){ ?>
         <div class="col-xs-6">
             <div class="panel panel-default" style="padding:15px">
                 <!-- <div class="panel-body text-center">当天传播总人数：0</div> -->
@@ -54,7 +54,7 @@
                                 <?php if($value['status'] === '0'){ ?>
                                     <a href="/home/status/<?php echo $value['id'] . '/1'; ?>" type="button" class="btn btn-success">发布</a>
                                 <?php } ?>
-                                <?php if($value['status'] !== '0'){ ?>
+                                <?php if($value['status'] === '0'){ ?>
                                     <a href="/home/poster/0/<?php echo $value['id']; ?>" type="button" class="btn btn-info">编辑</a>
                                 <?php } ?>
                                 <?php if($value['status'] === '2'){ ?>
@@ -125,7 +125,7 @@
                                         <a href="/home/spread_status/<?php echo $value['id'] . '/1/#spread'; ?>" type="button" class="btn btn-success">发布</a>
                                     <?php } ?>
                                     <a href="/home/spread_show/<?php echo $value['id']; ?>" target="_blank" type="button" class="btn btn-primary">预览</a>
-                                    <?php if($value['status'] !== '0'){ ?>
+                                    <?php if($value['status'] === '0'){ ?>
                                         <a href="/home/spread/<?php echo $value['id']; ?>" type="button" class="btn btn-info">编辑</a>
                                     <?php } ?>
                                     <?php if($value['status'] === '2'){ ?>

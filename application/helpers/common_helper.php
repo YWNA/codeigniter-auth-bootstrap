@@ -32,5 +32,5 @@ function get_guid($pw_length = 3){
     for ($i = 0; $i < $pw_length; $i++) {
         $randpwd .= chr(mt_rand(65, 90));
     }
-    return mt_rand(00000000, 99999999) . $randpwd;
+    return mt_rand(9999999, 99999999) . $randpwd;
 }

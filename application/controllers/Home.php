@@ -60,17 +60,18 @@ class Home extends CI_Controller {
         $this->db->where('uguid',$_SESSION['guid']);
         $ret = $this->db->get('poster_link')->row_array();
         if ($_POST){
-            $link = $_POST['link'];
-            $weixin = $_POST['weixin'];
             $which = $_POST['which'];
+            $id = $_POST['id'];
             $data = array(
-                'link' => $link,
-                'weixin' => $weixin,
-                'id' => 0,
+                'link' => isset($_POST['link']) ? $_POST['link'] : '',
+                'weixin' => isset($_POST['weixin']) ? $_POST['weixin'] : '',
                 'which' => $which,
                 'uguid' => $_SESSION['guid']
             );
             if($ret){
+                $this->db->where(
+                    array('uguid' => $_SESSION['guid'],'id' => $id)
+                );
                 $this->db->update('poster_link', $data);
             } else {
                 $this->db->insert('poster_link', $data);
@@ -110,6 +111,9 @@ class Home extends CI_Controller {
                 return;
             }
             if (isset($_POST['img']) && $_POST['img']){
+                $this->db->where('uguid', $_SESSION['guid']);
+                $this->db->from('spread');
+                $num = $this->db->count_all_results();
                 $data = array(
                     'title' => $_POST['title'],
                     'guid' => get_guid(),
@@ -118,11 +122,17 @@ class Home extends CI_Controller {
                     'uguid' => $_SESSION['guid'],
                     'create_time' => date('Y-m-d H:i:s',time()),
                 );
-                $this->db->insert('spread', $data);
+                if ($num > 9){
+                    show_error('推广链接超过十条');
+                } else {
+                    $this->db->insert('spread', $data);
+                }
+                echo 'ds';
+                var_dump($num);
+
                 redirect('/home#spread');
             }
         }
-
         $this->load->view('home/spread',array('title'=>'添加海报','ret'=>$ret));
     }
     public function fileupload()

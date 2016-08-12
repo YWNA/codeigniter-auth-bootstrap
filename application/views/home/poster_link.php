@@ -8,13 +8,14 @@
           <h1>海报链接地址配置<small></small></h1>
         </div>
         <form action="" method="post">
+            <input type="hidden" name="id" value="<?php echo !empty($ret['id']) ? $ret['id'] : ''; ?>">
             <div class="form-group">
-                <label for="which" class="control-label"><input id="which" value="0" name="which" <?php echo ($ret['which'] === '0') ? 'checked' : ''; ?> type="radio">链接地址</label>
-                <input name="link" value="<?php echo $ret['link'] ?>" type="text" class="form-control" placeholder="链接地址">
+                <label for="which0" class="control-label"><input onclick="enable(this)" id="which0" value="0" name="which" <?php echo ($ret['which'] === '0') ? 'checked' : ''; ?> type="radio">链接地址</label>
+                <input name="link" value="<?php echo $ret['link'] ?>" <?php echo ($ret['which'] === '0') ? '' : 'disabled="disabled"'; ?> type="text" class="form-control" placeholder="链接地址">
             </div>
             <div class="form-group">
-                <label for="which" class="control-label"><input id="which" value="1" name="which" <?php echo ($ret['which'] === '1') ? 'checked' : ''; ?> type="radio">公众号</label>
-                <input name="weixin" value="<?php echo $ret['weixin'] ?>" type="text" class="form-control" placeholder="公众号">
+                <label for="which1" class="control-label"><input onclick="enable(this)" id="which1" value="1" name="which" <?php echo ($ret['which'] === '1') ? 'checked' : ''; ?> type="radio">公众号</label>
+                <input name="weixin" value="<?php echo $ret['weixin'] ?>" <?php echo ($ret['which'] === '1') ? '' : 'disabled="disabled"'; ?> type="text" class="form-control" placeholder="公众号">
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
@@ -32,3 +33,15 @@
     bottom:0;
 }
 </style>
+<script>
+    function enable(obj){
+        var type = $(obj).attr('id');
+        if (type == 'which0'){
+            $('#which1').parent().next().attr('disabled','disabled');
+        } else {
+            $('#which0').parent().next().attr('disabled','disabled');
+        }
+        $(obj).parent().next().removeAttr('disabled');
+        console.log($(obj).attr('id'));
+    }
+</script>
