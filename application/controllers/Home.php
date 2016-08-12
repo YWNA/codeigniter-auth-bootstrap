@@ -82,6 +82,7 @@ class Home extends CI_Controller {
     }
     public function spread($id = NULL)
     {
+        $ret = null;
         if (!empty($id)){
             $this->db->where(
                 array(
