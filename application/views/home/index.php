@@ -26,6 +26,7 @@
         </div>
     </div>
     <div class="row">
+        <a name="poster"></a>
         <?php $uguid = $_SESSION['guid']; $tmp = array($uguid. '0', $uguid. '1', $uguid. '2', $uguid. '3'); if($poster) { foreach ($poster as $key => $value){ ?>
         <div class="col-xs-6">
             <div class="panel panel-default" style="padding:15px">
@@ -54,7 +55,7 @@
                                     <a href="/home/status/<?php echo $value['id'] . '/1'; ?>" type="button" class="btn btn-success">发布</a>
                                 <?php } ?>
                                 <?php if($value['status'] !== '0'){ ?>
-                                    <a href="/home/edit/<?php echo $value['id']; ?>" type="button" class="btn btn-info">编辑</a>
+                                    <a href="/home/poster/0/<?php echo $value['id']; ?>" type="button" class="btn btn-info">编辑</a>
                                 <?php } ?>
                                 <?php if($value['status'] === '2'){ ?>
                                     <a href="/home/status/<?php echo $value['id'] . '/3'; ?>" type="button" class="btn btn-success">暂停</a>
@@ -71,17 +72,18 @@
         </div>
         <?php if (in_array($value['guid'], $tmp)) { unset($tmp[array_search($value['guid'], $tmp)]);} } if($key < 3) {  ?>
             <div class="col-xs-6">
-                <a href="/home/poster/<?php echo current($tmp); ?>" style="height: 186px;line-height: 186px" class="btn btn-info btn-lg btn-block">
+                <a href="/home/poster/<?php echo current($tmp); ?>/0" style="height: 186px;line-height: 186px" class="btn btn-info btn-lg btn-block">
                     <span class="h1">添加海报</span>
                 </a>
             </div>
         <?php  } } else { ?>
             <div class="col-xs-6">
-                <a href="/home/poster/<?php echo current($tmp); ?>" style="height: 186px;line-height: 186px" class="btn btn-info btn-lg btn-block">
+                <a href="/home/poster/<?php echo current($tmp); ?>/0" style="height: 186px;line-height: 186px" class="btn btn-info btn-lg btn-block">
                     <span class="h1">添加海报</span>
                 </a>
             </div>
         <?php } ?>
+
 
     </div>
     <hr>
@@ -107,15 +109,33 @@
                     <?php if($spread) foreach ($spread as $key => $value){ ?>
                         <tr>
                         <th scope="row"><?php echo $value['guid']; ?></th>
-                            <td><?php echo $value['img']; ?></td>
-                            <td><?php echo $value['title']; ?></td>
+                            <td>
+                                <img width="60" src="<?php echo $value['img']; ?>" class="img-thumbnail">
+                            </td>
+                            <td class="col-xs-3"><?php echo $value['title']; ?></td>
                             <td><?php echo $value['propagation']; ?></td>
                             <td><?php echo $value['read_nums']; ?></td>
                             <td><?php echo $value['link']; ?></td>
                             <td><?php echo $value['online_time']; ?></td>
                             <td><?php echo $value['create_time']; ?></td>
                             <td>
-
+                                <a name="spread"></a>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                    <?php if($value['status'] === '0'){ ?>
+                                        <a href="/home/spread_status/<?php echo $value['id'] . '/1/#spread'; ?>" type="button" class="btn btn-success">发布</a>
+                                    <?php } ?>
+                                    <a href="/home/spread_show/<?php echo $value['id']; ?>" target="_blank" type="button" class="btn btn-primary">预览</a>
+                                    <?php if($value['status'] !== '0'){ ?>
+                                        <a href="/home/spread/<?php echo $value['id']; ?>" type="button" class="btn btn-info">编辑</a>
+                                    <?php } ?>
+                                    <?php if($value['status'] === '2'){ ?>
+                                        <a href="/home/spread_status/<?php echo $value['id'] . '/3/#spread'; ?>" type="button" class="btn btn-success">暂停</a>
+                                    <?php } ?>
+                                    <?php if($value['status'] === '1' || $value['status'] === '3'){ ?>
+                                        <a href="/home/spread_status/<?php echo $value['id'] . '/2/#spread'; ?>" type="button" class="btn btn-success">开启</a>
+                                    <?php } ?>
+                                    <a href="/home/spread_delete/<?php echo $value['id']; ?>" type="button" class="btn btn-danger">删除</a>
+                                </div>
                             </td>
                         </tr>
                     <?php } ?>

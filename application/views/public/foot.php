@@ -1,6 +1,12 @@
 <footer class="footer">
-    <div class="container"><br>
-        <p class="text-center">杭州微泊网络科技有限公司 COPYRIGHT 2016 技术支持 kf@iwebo.cc</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-5">
+                <p class="text-center">杭州微泊网络科技有限公司 COPYRIGHT 2016 技术支持 kf@iwebo.cc</p>
+            </div>
+
+        </div>
     </div>
 </footer>
 </div>

@@ -15,21 +15,45 @@ class Home extends CI_Controller {
         $spread = $this->db->get('spread')->result_array();
         $this->load->view('home/index',array('title'=>'管理页', 'poster' => $poster, 'spread' => $spread));
 	}
-    public function poster($id)
+    public function poster($guid = NULL, $id)
     {
+        $ret = null;
+        if (!empty($id) && $id !== '0'){
+            $this->db->where(
+                array(
+                    'id' => $id,
+                    'uguid' => $_SESSION['guid'],
+                )
+            );
+            $ret = $this->db->get('poster')->row_array();
+        }
         if ($_POST){
-            if (isset($_POST['img']) && $_POST['img'] && isset($_POST['id']) && ($_POST['id'] !== false)){
+            if (isset($_POST['id']) && $_POST['id']){
                 $data = array(
-                    'guid' => $_POST['id'],
+                    'img' => $_POST['img'],
+                );
+                $this->db->where(
+                    array(
+                        'id' => $_POST['id'],
+                        'uguid' => $_SESSION['guid'],
+                    )
+                );
+                $this->db->update('poster', $data);
+                redirect('/home#poster');
+                return;
+            }
+            if (isset($_POST['img']) && $_POST['img'] && isset($_POST['guid']) && ($_POST['guid'] !== false)){
+                $data = array(
+                    'guid' => $_POST['guid'],
                     'create_time' => date('Y-m-d H:i:s', time()),
                     'img' => $_POST['img'],
                     'uguid' => $_SESSION['guid']
                 );
                 $this->db->insert('poster', $data);
-                redirect('/home');
+                redirect('/home#poster');
             }
         }
-        $this->load->view('home/poster',array('title'=>'添加海报','id'=>$id));
+        $this->load->view('home/poster',array('title'=>'添加海报','guid'=>$guid,'ret'=>$ret));
     }
     public function poster_link()
     {
@@ -56,9 +80,34 @@ class Home extends CI_Controller {
         }
         $this->load->view('home/poster_link',array('title'=>'添加推广链接', 'ret'=>$ret));
     }
-    public function spread()
+    public function spread($id = NULL)
     {
+        if (!empty($id)){
+            $this->db->where(
+                array(
+                    'id' => $id,
+                    'uguid' => $_SESSION['guid'],
+                )
+            );
+            $ret = $this->db->get('spread')->row_array();
+        }
         if ($_POST){
+            if (isset($_POST['id']) && $_POST['id']){
+                $data = array(
+                    'title' => $_POST['title'],
+                    'img' => $_POST['img'],
+                    'link' => $_POST['link'],
+                );
+                $this->db->where(
+                    array(
+                        'id' => $_POST['id'],
+                        'uguid' => $_SESSION['guid'],
+                    )
+                );
+                $this->db->update('spread', $data);
+                redirect('/home#spread');
+                return;
+            }
             if (isset($_POST['img']) && $_POST['img']){
                 $data = array(
                     'title' => $_POST['title'],
@@ -69,11 +118,11 @@ class Home extends CI_Controller {
                     'create_time' => date('Y-m-d H:i:s',time()),
                 );
                 $this->db->insert('spread', $data);
-                redirect('/home');
+                redirect('/home#spread');
             }
         }
 
-        $this->load->view('home/spread',array('title'=>'添加海报'));
+        $this->load->view('home/spread',array('title'=>'添加海报','ret'=>$ret));
     }
     public function fileupload()
     {
@@ -103,7 +152,25 @@ class Home extends CI_Controller {
         );
         $this->db->where('id', $id);
         $this->db->update('poster', $data);
+        redirect('/home#poster');
+    }
+    public function spread_status($id, $status){
+        $data = array(
+            'status' => $status,
+        );
+        $this->db->where('id', $id);
+        $this->db->update('spread', $data);
         redirect('/home');
+    }
+    public function spread_show($id){
+        $this->db->where(
+            array(
+                'id' => $id,
+                'uguid' => $_SESSION['guid'],
+            )
+        );
+        $ret = $this->db->get('spread')->row_array();
+        $this->load->view('/home/spread_show',array('ret'=>$ret));
     }
     public function delete($id)
     {
@@ -111,8 +178,28 @@ class Home extends CI_Controller {
         $ret = $this->db->get('poster')->row_array();
         $path = __DIR__ . "/../.." . $ret['img'];
         unlink($path);
-        $this->db->where('id', $id);
+        $this->db->where(
+            array(
+                'id' => $id,
+                'uguid' => $_SESSION['guid'],
+            )
+        );
         $this->db->delete('poster');
-        redirect('/home');
+        redirect('/home#poster');
+    }
+    public function spread_delete($id)
+    {
+        $this->db->where('id', $id);
+        $ret = $this->db->get('spread')->row_array();
+        $path = __DIR__ . "/../.." . $ret['img'];
+        unlink($path);
+        $this->db->where(
+            array(
+                'id' => $id,
+                'uguid' => $_SESSION['guid'],
+            )
+        );
+        $this->db->delete('spread');
+        redirect('/home#spread');
     }
 }

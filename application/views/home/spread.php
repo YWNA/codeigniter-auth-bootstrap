@@ -9,26 +9,38 @@
         </div>
         <form action="" method="post" class="form-horizontal">
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">图片</label>
+                <label for="" class="col-sm-2 control-label">图片</label>
+                <?php if (!empty($ret['id'])){ ?>
+                    <div class="col-sm-2">
+                        <input type="hidden" name="id" value="<?php echo $ret['id']; ?>">
+                        <input id="spread_img_input" type="hidden" name="img" value="<?php echo $ret['img']; ?>">
+                        <img id="spread_img" src="<?php echo $ret['img']; ?>" width="100" height="auto">
+                    </div>
+                <?php } ?>
                 <div class="col-sm-5">
                     <!--dom结构部分-->
                     <div id="uploader-demo">
                         <!--用来存放item-->
                         <div id="fileList" class="uploader-list"></div>
-                        <div id="filePicker">选择图片</div>
+                        <?php if (!empty($ret['id'])){ ?>
+                            <div id="filePicker">编辑图片</div>
+                        <?php } else { ?>
+                            <div id="filePicker">选择图片</div>
+                        <?php } ?>
                     </div>
                 </div>
+
             </div>
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">标题</label>
                 <div class="col-sm-10">
-                    <input type="text" name="title" class="form-control" placeholder="标题">
+                    <input type="text" name="title" required value="<?php echo isset($ret['title']) ? $ret['title'] : ''; ?>" class="form-control" placeholder="标题">
                 </div>
             </div>
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">链接地址</label>
                 <div class="col-sm-10">
-                    <input type="text" name="link" class="form-control" placeholder="链接地址">
+                    <input type="text" name="link" required value="<?php echo isset($ret['link']) ? $ret['link'] : ''; ?>" class="form-control" placeholder="链接地址">
                 </div>
             </div>
             <div class="form-group">
@@ -152,6 +164,8 @@
                 var input = '<input name="img" type="hidden" value="'+ret.url+'">';
                 $('form').append(input);
                 $('#filePicker').hide();
+                $('#spread_img').hide();
+                $('#spread_img_input').hide();
             }
         });
 

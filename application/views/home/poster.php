@@ -8,15 +8,26 @@
           <h1>添加海报<small></small></h1>
         </div>
         <form method="post" action="" class="form-horizontal">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="hidden" name="guid" value="<?php echo $guid; ?>">
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">标题</label>
+                <label for="" class="col-sm-2 control-label">海报图片</label>
+                <?php if (!empty($ret['id'])){ ?>
+                    <div class="col-sm-2">
+                        <input type="hidden" name="id" value="<?php echo $ret['id']; ?>">
+                        <input id="spread_img_input" type="hidden" name="img" value="<?php echo $ret['img']; ?>">
+                        <img id="spread_img" name="img" src="<?php echo $ret['img']; ?>" width="100" height="auto">
+                    </div>
+                <?php } ?>
                 <div class="col-sm-5">
                     <!--dom结构部分-->
                     <div id="uploader-demo">
                         <!--用来存放item-->
                         <div id="fileList" class="uploader-list"></div>
-                        <div id="filePicker">选择图片</div>
+                        <?php if (!empty($ret['id'])){ ?>
+                            <div id="filePicker">编辑图片</div>
+                        <?php } else { ?>
+                            <div id="filePicker">选择图片</div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -142,6 +153,9 @@
                 var input = '<input name="img" type="hidden" value="'+ret.url+'">';
                 $('form').append(input);
                 $('#filePicker').hide();
+                $('#spread_img').hide();
+                $('#spread_img_input').hide();
+                $('#spread_img_input').attr('name','a');
             }
         });
 
