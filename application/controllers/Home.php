@@ -12,6 +12,7 @@ class Home extends CI_Controller {
         $this->db->where('uguid', $_SESSION['guid']);
         $poster = $this->db->get('poster')->result_array();
         $this->db->where('uguid',$_SESSION['guid']);
+        $this->db->order_by('create_time','DESC');
         $spread = $this->db->get('spread')->result_array();
         $this->load->view('home/index',array('title'=>'管理页', 'poster' => $poster, 'spread' => $spread));
 	}
