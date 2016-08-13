@@ -52,7 +52,7 @@
                         <div class="pull-right">
                             <div class="btn-group" role="group" aria-label="...">
                                 <?php if($value['status'] === '0'){ ?>
-                                    <a href="/home/status/<?php echo $value['id'] . '/1'; ?>" type="button" onclick="cons('发布后该海报将不能被编辑。')" class="btn btn-success">发布</a>
+                                    <a href="/home/status/<?php echo $value['id'] . '/1'; ?>" type="button" onclick="return cons('发布后该海报将不能被编辑。')" class="btn btn-success">发布</a>
                                 <?php } ?>
                                 <?php if($value['status'] === '0'){ ?>
                                     <a href="/home/poster/0/<?php echo $value['id']; ?>" type="button" class="btn btn-info">编辑</a>
@@ -63,7 +63,7 @@
                                 <?php if($value['status'] === '1' || $value['status'] === '3'){ ?>
                                     <a href="/home/status/<?php echo $value['id'] . '/2'; ?>" type="button" class="btn btn-success">开启</a>
                                 <?php } ?>
-                                <a href="/home/delete/<?php echo $value['id']; ?>" type="button" onclick="cons('请确认是否要删除该海报？')" class="btn btn-danger">删除</a>
+                                <a href="/home/delete/<?php echo $value['id']; ?>" type="button" onclick="return cons('请确认是否要删除该海报？')" class="btn btn-danger">删除</a>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                                 <a name="spread"></a>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                     <?php if($value['status'] === '0'){ ?>
-                                        <a href="/home/spread_status/<?php echo $value['id'] . '/1/#spread'; ?>" type="button" onclick="cons('发布后该推广信息将不能被编辑。 ')" class="btn btn-success">发布</a>
+                                        <a href="/home/spread_status/<?php echo $value['id'] . '/1/#spread'; ?>" type="button" onclick="return cons('发布后该推广信息将不能被编辑。 ')" class="btn btn-success">发布</a>
                                     <?php } ?>
                                     <a href="/home/spread_show/<?php echo $value['id']; ?>" target="_blank" type="button" class="btn btn-primary">预览</a>
                                     <?php if($value['status'] === '0'){ ?>
@@ -134,7 +134,7 @@
                                     <?php if($value['status'] === '1' || $value['status'] === '3'){ ?>
                                         <a href="/home/spread_status/<?php echo $value['id'] . '/2/#spread'; ?>" type="button" class="btn btn-success">开启</a>
                                     <?php } ?>
-                                    <a href="/home/spread_delete/<?php echo $value['id']; ?>" type="button" onclick="cons('请确认是否要删除该推广信息？')" class="btn btn-danger">删除</a>
+                                    <a href="/home/spread_delete/<?php echo $value['id']; ?>" type="button" onclick="return cons('请确认是否要删除该推广信息？')" class="btn btn-danger">删除</a>
                                 </div>
                             </td>
                         </tr>
