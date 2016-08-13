@@ -64,4 +64,49 @@ class Welcome extends CI_Controller {
         session_destroy();
         redirect('/');
     }
+    public function guid($guid)
+    {
+        $guid = $this->escape_str($guid);
+        $poster = $this->db->query("SELECT * FROM `poster` WHERE `uguid` = '".$guid."' ORDER BY RAND() LIMIT 1
+")->row_array();
+        $spread = $this->db->query("SELECT * FROM `spread` WHERE `uguid` = '".$guid."' ORDER BY RAND() LIMIT 3
+")->result_array();
+        $this->load->view('guid',array(
+            'poster' => $poster,
+            'spread' => $spread
+        ));
+    }
+    function escape_str($str, $like = FALSE)
+    {
+        if (is_array($str))
+        {
+            foreach ($str as $key => $val)
+            {
+                $str[$key] = escape_str($val, $like);
+            }
+
+            return $str;
+        }
+
+        if (function_exists('mysql_real_escape_string'))
+        {
+            $str = addslashes($str);
+        }
+        elseif (function_exists('mysql_escape_string'))
+        {
+            $str = mysql_escape_string($str);
+        }
+        else
+        {
+            $str = addslashes($str);
+        }
+
+        // escape LIKE condition wildcards
+        if ($like === TRUE)
+        {
+            $str = str_replace(array('%', '_'), array('\\%', '\\_'), $str);
+        }
+
+        return $str;
+    }
 }
