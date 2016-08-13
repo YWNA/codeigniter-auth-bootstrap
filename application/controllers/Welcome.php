@@ -71,6 +71,19 @@ class Welcome extends CI_Controller {
 ")->row_array();
         $spread = $this->db->query("SELECT * FROM `spread` WHERE `uguid` = '".$guid."' ORDER BY RAND() LIMIT 3
 ")->result_array();
+        $poster_id = $poster['id'];
+        $this->db->where('id', $poster_id);
+        $data = array(
+            'propagation' => $poster['propagation']+1
+        );
+        $this->db->update('poster', $data);
+        foreach ($spread as $key=>$value){
+            $this->db->where('id', $value['id']);
+            $data = array(
+                'propagation' => $value['propagation']+1
+            );
+            $this->db->update('spread', $data);
+        }
         $this->load->view('guid',array(
             'poster' => $poster,
             'spread' => $spread
@@ -108,5 +121,19 @@ class Welcome extends CI_Controller {
         }
 
         return $str;
+    }
+    public function redirect(){
+        $this->db->where('id', $this->escape_str($_GET['id']));
+        $read_nums = $this->db->get('spread')->row_array()['read_nums'];
+        $data = array(
+            'read_nums' => $read_nums+1
+        );
+        $this->db->where('id', $this->escape_str($_GET['id']));
+        $this->db->update('spread', $data);
+        $url = base64_decode( urldecode($_GET['url']) );
+        if (!preg_match('/^https:\/\//', $url)) {
+            $url = "http://" . $url;
+        }
+        redirect($url);
     }
 }

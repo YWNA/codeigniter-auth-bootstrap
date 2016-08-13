@@ -16,13 +16,15 @@
             <div class="panel-body">
                 <div class="media">
                     <div class="media-left">
-                        <a href="#">
+                        <a href="/welcome/redirect?url=<?php echo urlencode(base64_encode($value['link'])) . '&id=' . $value['id']; ?>" target="_blank" onclick="read(<?php echo $value['id'];?>)">
                             <img class="media-object" src="<?php echo $value['img'] ?>" width="100" alt="...">
                         </a>
                     </div>
                     <div class="media-body">
                         <p>
+                            <a href="/welcome/redirect?url=<?php echo urlencode(base64_encode($value['link'])) . '&id=' . $value['id']; ?>" target="_blank" onclick="read(<?php echo $value['id'];?>)">
                             <?php echo $value['title'] ?>
+                            </a>
                         </p>
                     </div>
                 </div>
