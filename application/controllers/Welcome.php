@@ -67,9 +67,9 @@ class Welcome extends CI_Controller {
     public function guid($guid)
     {
         $guid = $this->escape_str($guid);
-        $poster = $this->db->query("SELECT * FROM `poster` WHERE `uguid` = '".$guid."' ORDER BY RAND() LIMIT 1
+        $poster = $this->db->query("SELECT * FROM `poster` WHERE `uguid` = '".$guid."' AND status = 2 ORDER BY RAND() LIMIT 1
 ")->row_array();
-        $spread = $this->db->query("SELECT * FROM `spread` WHERE `uguid` = '".$guid."' ORDER BY RAND() LIMIT 3
+        $spread = $this->db->query("SELECT * FROM `spread` WHERE `uguid` = '".$guid."' AND status = 2 ORDER BY RAND() LIMIT 3
 ")->result_array();
         $poster_id = $poster['id'];
         $this->db->where('id', $poster_id);
