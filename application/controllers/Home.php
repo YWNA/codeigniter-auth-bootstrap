@@ -167,6 +167,7 @@ class Home extends CI_Controller {
         redirect('/home#poster');
     }
     public function spread_status($id, $status){
+        if($status === '1') $status = '2';
         $data = array(
             'status' => $status,
         );
