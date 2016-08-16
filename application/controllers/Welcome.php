@@ -64,8 +64,9 @@ class Welcome extends CI_Controller {
         session_destroy();
         redirect('/');
     }
-    public function guid($guid)
+    public function guid_poster($guid)
     {
+        $this->view_override = false;
         $guid = $this->escape_str($guid);
         $poster = $this->db->query("SELECT * FROM `poster` WHERE `uguid` = '".$guid."' AND status = 2 ORDER BY RAND() LIMIT 1
 ")->row_array();
@@ -84,11 +85,38 @@ class Welcome extends CI_Controller {
             );
             $this->db->update('spread', $data);
         }
-        $this->load->view('guid',array(
+        $this->load->view('guid_poster',array(
             'poster' => $poster,
             'spread' => $spread
         ));
     }
+    public function guid_spread($guid)
+    {
+        $this->view_override = false;
+        $guid = $this->escape_str($guid);
+        $poster = $this->db->query("SELECT * FROM `poster` WHERE `uguid` = '".$guid."' AND status = 2 ORDER BY RAND() LIMIT 1
+")->row_array();
+        $spread = $this->db->query("SELECT * FROM `spread` WHERE `uguid` = '".$guid."' AND status = 2 ORDER BY RAND() LIMIT 3
+")->result_array();
+        $poster_id = $poster['id'];
+        $this->db->where('id', $poster_id);
+        $data = array(
+            'propagation' => $poster['propagation']+1
+        );
+        $this->db->update('poster', $data);
+        foreach ($spread as $key=>$value){
+            $this->db->where('id', $value['id']);
+            $data = array(
+                'propagation' => $value['propagation']+1
+            );
+            $this->db->update('spread', $data);
+        }
+        $this->load->view('guid_spread',array(
+            'poster' => $poster,
+            'spread' => $spread
+        ));
+    }
+
     function escape_str($str, $like = FALSE)
     {
         if (is_array($str))

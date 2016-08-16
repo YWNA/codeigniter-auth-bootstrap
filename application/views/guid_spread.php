@@ -1,3 +1,8 @@
+<link href="/public/css/m.css" rel="stylesheet" media="screen">
+<link href="/public/css/topic.css" rel="stylesheet" media="screen">
+<link href="/public/css/activity.css" rel="stylesheet" media="screen">
+<link href="/public/css/vip.css" rel="stylesheet" media="screen">
+
 <hr style="border:1 dashed #EEEEEE" color="#EEEEEE">
 <div style="width:100%;">
     <p style="text-align:left;font-size:15px;">精选阅读</p>

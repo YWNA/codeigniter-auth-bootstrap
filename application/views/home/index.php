@@ -2,10 +2,10 @@
     <div class="alert"></div>
 </div>
 <div class="row">
-    <div class="col-xs-2">
-        <img src="" alt="logo">
+    <div class="col-xs-3">
+        <img src="/public/images/icon_small.png" alt="logo">
     </div>
-    <div class="col-xs-7"></div>
+    <div class="col-xs-6"></div>
     <div class="col-xs-3">
         <p class="text-right">
             <h4>公司编号：<small><?php echo $_SESSION['guid']; ?></small>&nbsp;&nbsp;<a href="/welcome/logout" class="btn btn-warning">退出</a></h4>
@@ -26,6 +26,8 @@
         </div>
     </div>
     <div class="row">
+        <h2>置顶海报</h2>
+        <hr>
         <a name="poster"></a>
         <?php $uguid = $_SESSION['guid']; $tmp = array($uguid. 'QEW', $uguid. 'ASD', $uguid. 'ZXC', $uguid. 'RTY'); if($poster) { foreach ($poster as $key => $value){ ?>
         <div class="col-xs-6">
