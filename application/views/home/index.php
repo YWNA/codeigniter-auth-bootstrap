@@ -73,13 +73,13 @@
             </div>
         </div>
         <?php if (in_array($value['guid'], $tmp)) { unset($tmp[array_search($value['guid'], $tmp)]);} } if($key < 3) {  ?>
-            <div class="col-xs-6">
+            <div class="col-xs-6" style="margin-bottom: 10px;">
                 <a href="/home/poster/<?php echo current($tmp); ?>/0" style="height: 186px;line-height: 186px" class="btn btn-info btn-lg btn-block">
                     <span class="h1">添加海报</span>
                 </a>
             </div>
         <?php  } } else { ?>
-            <div class="col-xs-6">
+            <div class="col-xs-6" style="margin-bottom: 10px;">
                 <a href="/home/poster/<?php echo current($tmp); ?>/0" style="height: 186px;line-height: 186px" class="btn btn-info btn-lg btn-block">
                     <span class="h1">添加海报</span>
                 </a>
