@@ -1,15 +1,17 @@
-<div class="row">
-    <div class="alert"></div>
-</div>
-<div class="row">
-    <div class="col-xs-3">
-        <img src="/public/images/icon_small.png" alt="logo">
+<div class="container">
+    <div class="row">
+        <div class="alert"></div>
     </div>
-    <div class="col-xs-6"></div>
-    <div class="col-xs-3">
-        <p class="text-right">
-            <h4>公司编号：<small><?php echo $_SESSION['guid']; ?></small>&nbsp;&nbsp;<a href="/welcome/logout" class="btn btn-warning">退出</a></h4>
-        </p>
+    <div class="row">
+        <div class="col-xs-3">
+            <img src="/public/images/icon_small.png" alt="logo">
+        </div>
+        <div class="col-xs-6"></div>
+        <div class="col-xs-3">
+            <p class="text-right">
+                <h4>公司编号：<small><?php echo $_SESSION['guid']; ?></small>&nbsp;&nbsp;<a href="/welcome/logout" class="btn btn-warning">退出</a></h4>
+            </p>
+        </div>
     </div>
 </div>
 <hr>
@@ -85,14 +87,14 @@
                 </a>
             </div>
         <?php } ?>
-
-
+        <hr>
+        <p class="text-right" style="margin-right: 15px"><a class="btn btn-success" href="/home/poster_link">海报链接跳转地址配置</a></p>
     </div>
-    <hr>
-    <p class="text-right"><a class="btn btn-success" href="/home/poster_link">海报链接跳转地址配置</a></p>
     <hr>
     <!-- 推广信息 -->
     <div class="row" style="border: 1px solid #000000;border-radius: 5px;">
+        <h2>推广信息</h2>
+        <hr>
         <table class="table table-hover">
             <thead>
                 <tr>

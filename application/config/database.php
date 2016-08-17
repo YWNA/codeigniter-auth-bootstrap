@@ -5,10 +5,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'chenbodb.ccggz2bkxzdl.ap-northeast-1.rds.amazonaws.com',
-	'username' => 'chenbo',
-	'password' => '863609ob',
-	'database' => 'weibo_v2',
+	'hostname' => '54.238.128.25',
+	'username' => 'root',
+	'password' => 'root',
+	'database' => 'weibo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
