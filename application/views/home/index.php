@@ -25,7 +25,7 @@
             <div class="panel-body text-center h2">当天传播总人数：0</div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="border: 1px solid #000000;border-radius: 5px;">
         <h2>置顶海报</h2>
         <hr>
         <a name="poster"></a>
@@ -92,7 +92,7 @@
     <p class="text-right"><a class="btn btn-success" href="/home/poster_link">海报链接跳转地址配置</a></p>
     <hr>
     <!-- 推广信息 -->
-    <div class="row">
+    <div class="row" style="border: 1px solid #000000;border-radius: 5px;">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -144,7 +144,7 @@
             </tbody>
         </table>
         <hr>
-        <p class="text-right"><a class="btn btn-success" href="/home/spread">添加推广</a></p>
+        <p class="text-right" style="margin-right: 15px"><a class="btn btn-success" href="/home/spread">添加推广</a></p>
     </div>
 </div>
 <div class="row">
