@@ -75,7 +75,10 @@ class Welcome extends CI_Controller {
         $data = array(
             'propagation' => $poster['propagation']+1
         );
-        $this->db->update('poster', $data);
+        if (!isset($_SESSION['poster'.$poster_id])) {
+            $this->db->update('poster', $data);
+            $_SESSION['poster'.$poster_id] = 'ko';
+        }
         $this->load->view('guid_poster',array(
             'poster' => $poster
         ));
@@ -92,7 +95,10 @@ class Welcome extends CI_Controller {
             $data = array(
                 'propagation' => $value['propagation']+1
             );
-            $this->db->update('spread', $data);
+            if (!isset($_SESSION['spread'.$value['id']])) {
+                $this->db->update('spread', $data);
+                $_SESSION['spread'.$value['id']] = 'ko';
+            }
         }
         $this->load->view('guid_spread',array(
             'spread' => $spread

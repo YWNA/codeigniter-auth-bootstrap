@@ -13,7 +13,7 @@
                 <?php if (!empty($ret['id'])){ ?>
                     <div class="col-sm-2">
                         <input type="hidden" name="id" value="<?php echo $ret['id']; ?>">
-                        <input id="spread_img_input" type="hidden" name="img" value="<?php echo $ret['img']; ?>">
+                        <input id="spread_img_input" type="hidden" name="img" value="<?php echo $ret['img']; ?>" required>
                         <img id="spread_img" src="<?php echo $ret['img']; ?>" width="100" height="auto">
                     </div>
                 <?php } ?>
@@ -74,6 +74,7 @@
 
             // Web Uploader实例
             uploader;
+
 
         // 初始化Web Uploader
         uploader = WebUploader.create({
@@ -170,4 +171,5 @@
         });
 
     });
+
 </script>
