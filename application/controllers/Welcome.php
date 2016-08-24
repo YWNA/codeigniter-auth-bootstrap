@@ -71,16 +71,19 @@ class Welcome extends CI_Controller {
         $poster = $this->db->query("SELECT * FROM `poster` WHERE `uguid` = '".$guid."' AND status = 2 ORDER BY RAND() LIMIT 1
 ")->row_array();
         $poster_id = $poster['id'];
-        $this->db->where('id', $poster_id);
         $data = array(
             'propagation' => $poster['propagation']+1
         );
         if (!isset($_SESSION['poster'.$poster_id])) {
+            $this->db->where('id', $poster_id);
             $this->db->update('poster', $data);
             $_SESSION['poster'.$poster_id] = 'ko';
         }
+        $this->db->where('uguid',$guid);
+        $poster_link = $this->db->get('poster_link')->row_array();
         $this->load->view('guid_poster',array(
-            'poster' => $poster
+            'poster' => $poster,
+            'poster_link' => $poster_link
         ));
     }
     public function guid_spread($guid)
