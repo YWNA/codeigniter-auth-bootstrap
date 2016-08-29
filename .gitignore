@@ -43,3 +43,4 @@ Temporary Items
 .apdisk
 .idea/
 ./application/config/database.php
+public/upload/
