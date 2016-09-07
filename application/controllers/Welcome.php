@@ -83,7 +83,8 @@ class Welcome extends CI_Controller {
         $poster_link = $this->db->get('poster_link')->row_array();
         $this->load->view('guid_poster',array(
             'poster' => $poster,
-            'poster_link' => $poster_link
+            'poster_link' => $poster_link,
+            'poster_id' => $poster_id
         ));
     }
     public function guid_spread($guid)
@@ -103,6 +104,7 @@ class Welcome extends CI_Controller {
                 $_SESSION['spread'.$value['id']] = 'ko';
             }
         }
+        var_dump($_SESSION);
         $this->load->view('guid_spread',array(
             'spread' => $spread
         ));
@@ -149,6 +151,20 @@ class Welcome extends CI_Controller {
         );
         $this->db->where('id', $this->escape_str($_GET['id']));
         $this->db->update('spread', $data);
+        $url = base64_decode( urldecode($_GET['url']) );
+        if (!preg_match('/^https:\/\//', $url)) {
+            $url = "http://" . $url;
+        }
+        redirect($url);
+    }
+    public function predirect(){
+        $this->db->where('id', $this->escape_str($_GET['id']));
+        $read_nums = $this->db->get('poster')->row_array()['read_nums'];
+        $data = array(
+            'read_nums' => $read_nums+1
+        );
+        $this->db->where('id', $this->escape_str($_GET['id']));
+        $this->db->update('poster', $data);
         $url = base64_decode( urldecode($_GET['url']) );
         if (!preg_match('/^https:\/\//', $url)) {
             $url = "http://" . $url;
