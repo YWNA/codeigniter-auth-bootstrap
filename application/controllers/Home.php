@@ -65,7 +65,8 @@ class Home extends CI_Controller {
             $id = $_POST['id'];
             $data = array(
                 'link' => isset($_POST['link']) ? $_POST['link'] : '',
-                'weixin' => isset($_POST['weixin']) ? $_POST['weixin'] : '',
+                'weixin' => isset($_POST['weixin']) ? sprintf('http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=%s==#wechat_webview_type=1&wechat_redirect
+', $_POST['weixin']) : '',
                 'which' => $which,
                 'uguid' => $_SESSION['guid']
             );
@@ -159,6 +160,7 @@ class Home extends CI_Controller {
         }
     }
     public function status($id, $status){
+        if($status === '1') $status = '2';
         $data = array(
             'status' => $status,
         );

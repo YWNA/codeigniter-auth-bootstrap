@@ -19,6 +19,7 @@
                 <?php } ?>
                 <div class="col-sm-5">
                     <!--dom结构部分-->
+                    <!-- <input type="fi'le" required> -->
                     <div id="uploader-demo">
                         <!--用来存放item-->
                         <div id="fileList" class="uploader-list"></div>
@@ -46,7 +47,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-info">确定</button>
-                    <button type="reset" class="btn btn-default">取消</button>
+                    <!-- <button type="reset" class="btn btn-default">取消</button> -->
                     <a href="/home" class="btn btn-primary">返回</a>
                 </div>
             </div>
@@ -171,5 +172,5 @@
         });
 
     });
-
+$('input[type="file"]').attr('required', 'required')
 </script>

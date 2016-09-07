@@ -20,7 +20,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-info">确定</button>
-                    <button type="reset" class="btn btn-default">取消</button>
+                    <!-- <button type="reset" class="btn btn-default">取消</button> -->
                     <a href="/home" class="btn btn-primary">返回</a>
                 </div>
             </div>
