@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-body text-center h2">当天传播总人数：0</div>
+            <div class="panel-body text-center h2">当天传播总人数：<?php $ret = unserialize($company['nums']);echo !empty($ret) ? $ret['nums'] : 0; ?></div>
         </div>
     </div>
     <div class="row" style="border: 1px solid #000000;border-radius: 5px;">

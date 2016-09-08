@@ -14,7 +14,9 @@ class Home extends CI_Controller {
         $this->db->where('uguid',$_SESSION['guid']);
         $this->db->order_by('create_time','DESC');
         $spread = $this->db->get('spread')->result_array();
-        $this->load->view('home/index',array('title'=>'管理页', 'poster' => $poster, 'spread' => $spread));
+        $this->db->where('guid', $_SESSION['guid']);
+        $company = $this->db->get('company')->row_array();
+        $this->load->view('home/index',array('title'=>'管理页', 'poster' => $poster, 'spread' => $spread, 'company' => $company));
 	}
     public function poster($guid = NULL, $id)
     {

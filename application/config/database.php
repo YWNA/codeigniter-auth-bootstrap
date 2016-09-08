@@ -5,9 +5,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '54.238.128.25',
+	'hostname' => 'fangke100.com',
 	'username' => 'root',
-	'password' => 'root',
+	'password' => 'Pass.2016',
 	'database' => 'weibo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
