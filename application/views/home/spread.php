@@ -35,13 +35,13 @@
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">标题</label>
                 <div class="col-sm-10">
-                    <input type="text" name="title" required value="<?php echo isset($ret['title']) ? $ret['title'] : ''; ?>" class="form-control" placeholder="标题">
+                    <input type="text" onfocus="a()" name="title" required value="<?php echo isset($ret['title']) ? $ret['title'] : ''; ?>" class="form-control" placeholder="标题">
                 </div>
             </div>
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">链接地址</label>
                 <div class="col-sm-10">
-                    <input type="text" name="link" required value="<?php echo isset($ret['link']) ? $ret['link'] : ''; ?>" class="form-control" placeholder="链接地址">
+                    <input type="text" onfocus="a()" name="link" required value="<?php echo isset($ret['link']) ? $ret['link'] : ''; ?>" class="form-control" placeholder="链接地址">
                 </div>
             </div>
             <div class="form-group">
@@ -172,5 +172,7 @@
         });
 
     });
-$('input[type="file"]').attr('required', 'required')
+function a () {
+    $('input[type="file"]').attr('required', 'required')
+}
 </script>
