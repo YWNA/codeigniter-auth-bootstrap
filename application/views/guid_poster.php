@@ -8,5 +8,5 @@
 }echo urlencode(base64_encode($url)) . '&id=' . $poster_id; ?>" target="_blank">
 <!--    <div style="width:100%;height:120px;background-image:url();background-repeat:no-repeat;background-size: auto">-->
 <!--    </div>-->
-    <img src="<?php echo $poster['img'];?>" style="display: block;width: 100%;height: 120px">
+    <img src="<?php echo $poster['img'];?>" style="display: block;width: auto;margin:auto;height: 120px">
 </a>
