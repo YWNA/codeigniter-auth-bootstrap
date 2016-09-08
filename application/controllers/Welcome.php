@@ -104,7 +104,6 @@ class Welcome extends CI_Controller {
                 $_SESSION['spread'.$value['id']] = 'ko';
             }
         }
-        var_dump($_SESSION);
         $this->load->view('guid_spread',array(
             'spread' => $spread
         ));
