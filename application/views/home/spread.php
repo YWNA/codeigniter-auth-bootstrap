@@ -7,7 +7,7 @@
         <div class="page-header">
           <h1>添加推广<small></small></h1>
         </div>
-        <form action="" method="post" class="form-horizontal">
+        <form id="ko" action="" method="post" class="form-horizontal">
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">图片</label>
                 <?php if (!empty($ret['id'])){ ?>
@@ -35,13 +35,13 @@
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">标题</label>
                 <div class="col-sm-10">
-                    <input type="text" onfocus="a()" name="title" required value="<?php echo isset($ret['title']) ? $ret['title'] : ''; ?>" class="form-control" placeholder="标题">
+                    <input type="text" name="title" required value="<?php echo isset($ret['title']) ? $ret['title'] : ''; ?>" class="form-control" placeholder="标题">
                 </div>
             </div>
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">链接地址</label>
                 <div class="col-sm-10">
-                    <input type="text" onfocus="a()" name="link" required value="<?php echo isset($ret['link']) ? $ret['link'] : ''; ?>" class="form-control" placeholder="链接地址">
+                    <input type="text" name="link" required value="<?php echo isset($ret['link']) ? $ret['link'] : ''; ?>" class="form-control" placeholder="链接地址">
                 </div>
             </div>
             <div class="form-group">
@@ -172,7 +172,7 @@
         });
 
     });
-function a () {
-    // $('input[name="file"]').attr('required', 'required')
-}
+$('#ko').submit(function () {
+    if ($('input[name="img"]').val() == null) {alert('图片必选');return false};
+})
 </script>
