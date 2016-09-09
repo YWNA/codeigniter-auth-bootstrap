@@ -173,6 +173,6 @@
 
     });
 function a () {
-    $('input[type="file"]').attr('required', 'required')
+    // $('input[name="file"]').attr('required', 'required')
 }
 </script>
