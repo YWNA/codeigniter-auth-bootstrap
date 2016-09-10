@@ -89,6 +89,8 @@ class Welcome extends CI_Controller {
     }
     public function guid_spread($guid)
     {
+        $this->load->helper('cookie');
+
         $this->view_override = false;
         $guid = $this->escape_str($guid);
         $spread = $this->db->query("SELECT * FROM `spread` WHERE `uguid` = '".$guid."' AND status = 2 ORDER BY RAND() LIMIT 3
@@ -99,9 +101,13 @@ class Welcome extends CI_Controller {
             $data = array(
                 'propagation' => $value['propagation']+1
             );
-            if (!isset($_SESSION['spread'.$value['id']])) {
-                $this->db->update('spread', $data);
-                $_SESSION['spread'.$value['id']] = 'ko';
+            if (empty(get_cookie('spread'.$value['id']))) {
+                $ret = $this->db->update('spread', $data);
+                while ($this->db->affected_rows() == 0) {
+                    $this->db->where('id', $value['id']);
+                    $this->db->update('spread', $data);
+                }
+                setcookie('spread'.$value['id'], 'ko'.$value['id']);
             }
         }
         $this->load->view('guid_spread',array(
