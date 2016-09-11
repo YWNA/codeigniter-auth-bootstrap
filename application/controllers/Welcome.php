@@ -172,7 +172,7 @@ class Welcome extends CI_Controller {
         $this->db->update('poster', $data);
         $url = base64_decode( urldecode($_GET['url']) );
         if (!preg_match('/^https:\/\//', $url)) {
-            $url = "http://" . $url;
+    //        $url = "http://" . $url;
         }
         redirect($url);
     }
