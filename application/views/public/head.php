@@ -9,4 +9,3 @@
     <link href="<?php echo base_url() ?>public/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-    <h1>你好，世界！</h1>
