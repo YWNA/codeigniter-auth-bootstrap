@@ -1,4 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/simditor//site/assets/styles/simditor.css" />
+<!--引入wangEditor.css-->
+<link rel="stylesheet" type="text/css" href="../dist/css/wangEditor.min.css">
 <div class="alert"></div>
 <div class="container">
     <div class="row">
@@ -21,6 +23,20 @@
         <!-- 加载编辑器的容器 -->
         <script id="container" name="content" type="text/plain"></script>
     </div>
+    <div class="row">
+        <div class="page-header">
+            <h1>Example page header <small>Subtext for header</small></h1>
+        </div>
+        <!--baidu-->
+        <!-- 加载编辑器的容器 -->
+        <script id="container" name="content" type="text/plain"></script>
+    </div>
+    <textarea id="textarea1"><p>请输入内容...</p></textarea>
+    <!--这里引用jquery和wangEditor.js-->
+    <script type="text/javascript">
+        var editor = new wangEditor('textarea1');
+        editor.create();
+    </script>
 
 </div>
 <!--KindEditor-->
@@ -54,3 +70,7 @@
 <script type="text/javascript">
     var ue = UE.getEditor('container');
 </script>
+<!--wangEditor-->
+<!--引入jquery和wangEditor.js-->   <!--注意：javascript必须放在body最后，否则可能会出现问题-->
+<script type="text/javascript" src="../dist/js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>
