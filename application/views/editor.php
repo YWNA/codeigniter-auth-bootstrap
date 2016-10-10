@@ -1,6 +1,7 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/simditor//site/assets/styles/simditor.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/simditor/site/assets/styles/simditor.css" />
 <!--引入wangEditor.css-->
-<link rel="stylesheet" type="text/css" href="../dist/css/wangEditor.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/wangEditor/dist/css/wangEditor.min.css">
+<script type="text/javascript" src="<?php echo base_url() ?>public/simditor/site/assets/scripts/jquery.min.js"></script>
 <div class="alert"></div>
 <div class="container">
     <div class="row">
@@ -32,6 +33,9 @@
         <script id="container" name="content" type="text/plain"></script>
     </div>
     <textarea id="textarea1"><p>请输入内容...</p></textarea>
+    <!--wangEditor-->
+    <!--引入jquery和wangEditor.js-->   <!--注意：javascript必须放在body最后，否则可能会出现问题-->
+    <script type="text/javascript" src="<?php echo base_url() ?>/public/wangEditor/dist/js/wangEditor.min.js"></script>
     <!--这里引用jquery和wangEditor.js-->
     <script type="text/javascript">
         var editor = new wangEditor('textarea1');
@@ -48,7 +52,7 @@
     });
 </script>
 <!--simditor-->
-<script type="text/javascript" src="<?php echo base_url() ?>public/simditor/site/assets/scripts/jquery.min.js"></script>
+
 <script type="text/javascript" src="<?php echo base_url() ?>public/simditor/site/assets/scripts/module.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>public/simditor/site/assets/scripts/hotkeys.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>public/simditor/site/assets/scripts/uploader.js"></script>
@@ -70,7 +74,12 @@
 <script type="text/javascript">
     var ue = UE.getEditor('container');
 </script>
-<!--wangEditor-->
-<!--引入jquery和wangEditor.js-->   <!--注意：javascript必须放在body最后，否则可能会出现问题-->
-<script type="text/javascript" src="../dist/js/lib/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>
+
+
+<!--summernote-->
+<!-- include libraries(jQuery, bootstrap) -->
+<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />-->
+<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+
+<!-- include summernote css/js-->
